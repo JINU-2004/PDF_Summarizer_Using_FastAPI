@@ -11,7 +11,7 @@ import pytesseract
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
-GEMINI_API_KEY = "AIzaSyAhmX3uyVgyRc36DXy_mVmr3jhE-UbyxMk"
+GEMINI_API_KEY = "YOUR_API_KEY"
 genai.configure(api_key=GEMINI_API_KEY)
 
 async def generate_summary(text: str):
