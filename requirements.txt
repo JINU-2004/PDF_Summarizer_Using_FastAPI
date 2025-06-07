@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+jinja2
+fitz
+python-multipart
+PyMuPDF
+openai
+google-generativeai
+pdf2image
+pytesseract

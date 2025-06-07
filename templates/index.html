@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF Summarizer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        background: rgb(7, 1, 59);
+        font-family: "Poppins", sans-serif;
+        color: #6b7280;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 4rem 1rem;
+      }
+      main {
+        max-width: 700px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        line-height: 1.1;
+        color: rgb(142, 176, 247);
+        margin: 0;
+      }
+      p.subtitle {
+        margin: 0;
+        font-size: 1.125rem;
+        color: #6b7280;
+      }
+      form {
+        background: #f9fafb;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        box-shadow: 0 10px 15px rgb(0 0 0 / 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      label {
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 0.5rem;
+        display: block;
+        font-size: 1rem;
+      }
+      input[type="file"] {
+        border: 2px dashed #d1d5db;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        cursor: pointer;
+        background: #ffffff;
+        transition: border-color 0.3s ease;
+        font-size: 1rem;
+        color: #374151;
+      }
+      input[type="file"]:hover {
+        border-color: #4f46e5;
+      }
+      button {
+        background-color: rgb(7, 1, 59);
+        color: rgb(142, 176, 247);
+        font-weight: 700;
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+        border: none;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        align-self: flex-start;
+        transition: background-color 0.3s ease;
+      }
+      button:hover,
+      button:focus {
+        background-color: #4338ca;
+        outline: none;
+      }
+      .summary-card {
+        background: #f9fafb;
+        border-radius: 0.75rem;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 10px 15px rgb(0 0 0 / 0.05);
+        color: #374151;
+        max-height: 300px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        font-size: 1rem;
+        line-height: 1.5;
+        border: 1px solid #e5e7eb;
+      }
+      .footer {
+        margin-top: 4rem;
+        font-size: 0.875rem;
+        color: #9ca3af;
+        text-align: center;
+      }
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2.25rem;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>PDF Summarizer</h1>
+      <p class="subtitle">
+        Upload a PDF file and get a concise summary of its content instantly.
+      </p>
+
+      <form
+        action="/summarize"
+        method="post"
+        enctype="multipart/form-data"
+        aria-label="Upload PDF form"
+      >
+        <label for="pdf_file">Select PDF file</label>
+        <input
+          type="file"
+          id="pdf_file"
+          name="pdf_file"
+          accept="application/pdf"
+          required
+        />
+        <button type="submit">Summarize PDF</button>
+      </form>
+
+      {% if summary %}
+      <section aria-live="polite" aria-atomic="true">
+        <h2>Summary</h2>
+        <div class="summary-card" role="region" aria-label="PDF summary">
+          {{ summary }}
+        </div>
+      </section>
+      {% endif %}
+
+      <div class="footer">&copy; 2025 PDF Summarizer</div>
+    </main>
+  </body>
+</html>
