@@ -13,7 +13,7 @@ This is a web-based PDF Summarization tool built with **FastAPI**, **Google Gemi
 
 ## 🖥️ Demo UI
 
-
+![App Preview](assets/image.png)
 
 > Upload your PDF ➡️ Automatically extracts text ➡️ Summarizes it using Gemini ➡️ Displays it on the same page!
 
